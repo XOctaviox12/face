@@ -1,0 +1,19 @@
+/* Efectos para las tarjetas de personajes */
+.personaje-card {
+  cursor: pointer;
+}
+
+.personaje-card:hover {
+  border-color: #ffb000 !important;
+  box-shadow: 0 0 20px rgba(255, 176, 0, 0.4) !important;
+  transform: translateY(-5px);
+}
+
+.personaje-card:hover .card-glow {
+  left: 100%;
+}
+
+.personaje-card:active {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255, 176, 0, 0.3) !important;
+}

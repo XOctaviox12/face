@@ -1,0 +1,171 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #1b100e; border-bottom: 2px solid #7b3b1d;">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first" style="color: #ffcc5c;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color: #ffcc5c; font-family: 'Press Start 2P', monospace; font-size: 0.9rem; text-shadow: 1px 1px 0 #4a260c;">
+      INFORMACIÓN
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #241a17; font-family: 'Press Start 2P', monospace;">
+  <!-- Efecto CRT -->
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: repeating-linear-gradient(0deg,rgba(0,0,0,0.1) 0px,rgba(0,0,0,0.1) 1px,transparent 2px); z-index: 9999; opacity: 0.1;"></div>
+
+  <!-- Header decorativo -->
+  <div style="text-align: center; padding: 1.5rem 1rem; background: linear-gradient(180deg, #1b100e 0%, #241a17 100%); border-bottom: 2px solid #7b3b1d;">
+    <h1 style="color: #ffcc5c; font-size: 1rem; text-shadow: 2px 2px 0 #4a260c, 0 0 12px #ffb000; margin: 0 0 0.5rem 0;">
+      PERSONAJES FACE-BOMB
+    </h1>
+    <p style="color: #f0d1a6; font-size: 0.5rem; text-shadow: 1px 1px 0 #3a1b08; margin: 0;">
+      SELECCIONA UN PERSONAJE PARA VER SUS DETALLES
+    </p>
+  </div>
+
+  <ion-card
+    (click)="verDetalle(personaje.id)"
+    *ngFor="let personaje of personajesRecientes"
+    style="
+      --background: #261912;
+      margin: 1rem;
+      border: 3px solid #8c4520;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    "
+    class="personaje-card"
+  >
+    <!-- Badge de personaje -->
+    <div style="
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: linear-gradient(135deg, #ffb000 0%, #ff4800 100%);
+      color: #2b1007;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.5rem;
+      text-shadow: 1px 1px 0 #ffe3b3;
+      z-index: 2;
+      border: 1px solid #803000;
+    ">
+      PERSONAJE
+    </div>
+
+    <!-- Imagen con filtro retro -->
+    <img 
+      [src]="personaje.imagen" 
+      style="
+        height: 35vh; 
+        width: 100%; 
+        object-fit: cover;
+        filter: brightness(0.8) sepia(0.2) contrast(1.1);
+        border-bottom: 3px solid #7b3b1d;
+        transition: all 0.3s ease;
+      " 
+      class="card-image"
+    />
+    
+    <ion-card-header style="
+      padding: 1.2rem; 
+      background: linear-gradient(180deg, rgba(59, 30, 18, 0.9) 0%, rgba(38, 25, 18, 1) 100%);
+      border-top: 1px solid #7b3b1d;
+    ">
+      <ion-card-title style="
+        color: #ffcc5c; 
+        font-family: 'Press Start 2P', monospace; 
+        font-size: 0.75rem;
+        text-shadow: 2px 2px 0 #4a260c;
+        margin-bottom: 0.3rem;
+        line-height: 1.3;
+      ">
+        {{ personaje.nombre }}
+      </ion-card-title>
+      
+      <ion-card-subtitle style="
+        color: #f0d1a6; 
+        font-family: 'Press Start 2P', monospace; 
+        font-size: 0.55rem;
+        text-shadow: 1px 1px 0 #3a1b08;
+        opacity: 0.9;
+        letter-spacing: 0.5px;
+      ">
+        {{ personaje.apellido }}
+      </ion-card-subtitle>
+
+      <!-- Stats mini -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid #7b3b1d;">
+        <div style="display: flex; align-items: center;">
+          <ion-icon name="heart" style="color: #ff5555; font-size: 0.7rem; margin-right: 0.3rem;"></ion-icon>
+          <span style="color: #f0d1a6; font-size: 0.5rem;">SALUD</span>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <ion-icon name="flash" style="color: #ffb000; font-size: 0.7rem; margin-right: 0.3rem;"></ion-icon>
+          <span style="color: #f0d1a6; font-size: 0.5rem;">DAÑO</span>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <ion-icon name="speedometer" style="color: #00ff88; font-size: 0.7rem; margin-right: 0.3rem;"></ion-icon>
+          <span style="color: #f0d1a6; font-size: 0.5rem;">VELOCIDAD</span>
+        </div>
+      </div>
+    </ion-card-header>
+
+    <!-- Efecto de brillo al pasar el mouse -->
+    <div style="
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 176, 0, 0.15), transparent);
+      transition: left 0.6s ease;
+      pointer-events: none;
+      z-index: 1;
+    " class="card-glow"></div>
+
+    <!-- Efecto de borde brillante -->
+    <div style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: inset 0 0 0 0px #ffb000;
+      transition: box-shadow 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    " class="card-border-glow"></div>
+  </ion-card>
+
+  <!-- Mensaje si no hay personajes -->
+  <div *ngIf="personajesRecientes.length === 0" style="
+    text-align: center; 
+    padding: 4rem 1rem;
+    color: #f0d1a6;
+    font-family: 'Press Start 2P', monospace;
+    background: rgba(38, 25, 18, 0.7);
+    margin: 2rem;
+    border: 2px solid #7b3b1d;
+    border-radius: 8px;
+  ">
+    <ion-icon name="alert-circle-outline" style="font-size: 3rem; color: #ffb000; margin-bottom: 1rem; filter: drop-shadow(2px 2px 0 #4a260c);"></ion-icon>
+    <p style="font-size: 0.7rem; text-shadow: 1px 1px 0 #3a1b08; margin: 0 0 0.5rem 0;">
+      NO HAY PERSONAJES DISPONIBLES
+    </p>
+    <p style="font-size: 0.5rem; color: #ffcc5c; text-shadow: 1px 1px 0 #4a260c; margin: 0;">
+      VUELVE PRONTO PARA NUEVOS PERSONAJES
+    </p>
+  </div>
+
+  <!-- Footer decorativo -->
+  <div style="text-align: center; padding: 2rem 1rem; border-top: 2px solid #7b3b1d; margin-top: 2rem;">
+    <p style="color: #f0d1a6; font-size: 0.5rem; text-shadow: 1px 1px 0 #3a1b08; margin: 0;">
+      FACE-BOMB © 2024 - UNA AVENTURA DE DULCES Y CAOS
+    </p>
+  </div>
+</ion-content>

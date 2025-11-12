@@ -1,0 +1,144 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background: #1b100e; border-bottom: 2px solid #7b3b1d;">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first" style="color: #ffcc5c;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color: #ffcc5c; font-family: 'Press Start 2P', monospace; font-size: 0.9rem; text-shadow: 1px 1px 0 #4a260c;">
+      JUGAR
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: #241a17; font-family: 'Press Start 2P', monospace;">
+  <!-- Efecto CRT -->
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: repeating-linear-gradient(0deg,rgba(0,0,0,0.1) 0px,rgba(0,0,0,0.1) 1px,transparent 2px); z-index: 9999; opacity: 0.1;"></div>
+
+  <!-- Header condense -->
+  <ion-header collapse="condense">
+    <ion-toolbar style="--background: rgba(27, 16, 14, 0.9);">
+      <ion-title size="large" style="color: #ffcc5c; font-family: 'Press Start 2P', monospace; font-size: 1.2rem; text-shadow: 2px 2px 0 #4a260c, 0 0 12px #ffb000;">
+        FACE-BOMB
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Contenido principal -->
+  <div style="padding: 2rem 1rem; text-align: center;">
+
+    <!-- Imagen del juego -->
+    <div style="margin: 2rem auto; max-width: 300px; border: 3px solid #8c4520; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);">
+      <img 
+        src="assets/icon/facepost.jpg" 
+        alt="Face-Bomb Game"
+        style="width: 100%; height: auto; display: block; filter: brightness(0.8) sepia(0.2) contrast(1.1);"
+      />
+    </div>
+
+    <!-- Título principal -->
+    <h1 style="color: #ffcc5c; font-size: 1.4rem; text-shadow: 2px 2px 0 #4a260c, 0 0 15px #ffb000; margin: 1rem 0 0.5rem 0;">
+      ¡ENTRA A LA ACCIÓN!
+    </h1>
+    
+    <p style="color: #f0d1a6; font-size: 0.7rem; text-shadow: 1px 1px 0 #3a1b08; margin: 0 0 2rem 0; line-height: 1.5;">
+      PREPÁRATE PARA LA AVENTURA MÁS DULCE Y CAÓTICA DEL SALÓN DE CLASES
+    </p>
+
+    <!-- Botón Jugar principal -->
+    <ion-button 
+      (click)="irAlJuego()"
+      style="
+        --background: linear-gradient(135deg, #ffb000 0%, #ff4800 100%);
+        --color: #2b1007;
+        --border-radius: 12px;
+        --padding-top: 1.2rem;
+        --padding-bottom: 1.2rem;
+        --padding-start: 2rem;
+        --padding-end: 2rem;
+        font-family: 'Press Start 2P', monospace;
+        font-size: 0.9rem;
+        text-shadow: 1px 1px 0 #ffe3b3;
+        border: 3px solid #803000;
+        box-shadow: 0 6px 20px rgba(255, 176, 0, 0.4);
+        margin: 1rem 0 2rem 0;
+        min-height: 60px;
+      "
+      class="btn-jugar"
+    >
+      <ion-icon name="play-circle" slot="start" style="font-size: 1.2rem;"></ion-icon>
+      ¡JUGAR AHORA!
+    </ion-button>
+
+    <!-- Información del juego -->
+    <div style="background: rgba(38, 25, 18, 0.8); border: 2px solid #7b3b1d; border-radius: 8px; padding: 1.5rem; margin: 2rem auto; max-width: 500px;">
+      <h2 style="color: #ffcc5c; font-size: 0.8rem; text-shadow: 1px 1px 0 #4a260c; margin: 0 0 1rem 0;">
+        INSTRUCCIONES RÁPIDAS
+      </h2>
+      
+      <div style="text-align: left; color: #f0d1a6; font-size: 0.6rem; line-height: 1.6;">
+        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+          <ion-icon name="arrow-forward" style="color: #ffb000; margin-right: 0.5rem; font-size: 0.7rem;"></ion-icon>
+          <span>MUÉVETE CON LAS TECLAS DE DIRECCIÓN</span>
+        </div>
+        
+        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+          <ion-icon name="business" style="color: #ffb000; margin-right: 0.5rem; font-size: 0.7rem;"></ion-icon>
+          <span>VENDE DULCES A TUS COMPAÑEROS DE CLASE</span>
+        </div>
+        
+        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+          <ion-icon name="eye-off" style="color: #ffb000; margin-right: 0.5rem; font-size: 0.7rem;"></ion-icon>
+          <span>EVITA QUE LOS PROFESORES TE ATRAPEN</span>
+        </div>
+        
+        <div style="display: flex; align-items: center;">
+          <ion-icon name="heart" style="color: #ff5555; margin-right: 0.5rem; font-size: 0.7rem;"></ion-icon>
+          <span>TIENES 3 VIDAS - ¡CUIDADO CON LOS LIBROS!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones secundarios -->
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 2rem 0;">
+      <ion-button 
+        style="
+          --background: #3b1e12;
+          --color: #ffcc5c;
+          --border-radius: 8px;
+          border: 2px solid #ffb000;
+          font-family: 'Press Start 2P', monospace;
+          font-size: 0.6rem;
+          min-height: 45px;
+        "
+        (click)="navegar('/informacion')"
+      >
+        <ion-icon name="information-circle" slot="start"></ion-icon>
+        INFORMACIÓN
+      </ion-button>
+      
+      <ion-button 
+        style="
+          --background: #3b1e12;
+          --color: #ffcc5c;
+          --border-radius: 8px;
+          border: 2px solid #ffb000;
+          font-family: 'Press Start 2P', monospace;
+          font-size: 0.6rem;
+          min-height: 45px;
+        "
+        (click)="navegar('/social')"
+      >
+        <ion-icon name="people" slot="start"></ion-icon>
+        NOVEDADES
+      </ion-button>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div style="text-align: center; padding: 2rem 1rem; border-top: 2px solid #7b3b1d; margin-top: 2rem;">
+    <p style="color: #f0d1a6; font-size: 0.5rem; text-shadow: 1px 1px 0 #3a1b08; margin: 0;">
+      FACE-BOMB © 2024 - UNA AVENTURA DE DULCES Y CAOS
+    </p>
+  </div>
+
+</ion-content>

@@ -1,0 +1,15 @@
+/* Efectos hover para los items del menú */
+.menu-item {
+  transition: all 0.2s ease-in-out;
+}
+
+.menu-item:hover {
+  --background: #3b1e12;
+  border-color: #ffb000 !important;
+  box-shadow: 0 0 15px rgba(255, 176, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.menu-item:active {
+  transform: translateY(0px);
+}

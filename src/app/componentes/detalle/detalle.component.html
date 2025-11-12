@@ -1,0 +1,192 @@
+<ion-content style="--background: #241a17; font-family: 'Press Start 2P', monospace;">
+  <!-- Efecto CRT -->
+  <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: repeating-linear-gradient(0deg,rgba(0,0,0,0.1) 0px,rgba(0,0,0,0.1) 1px,transparent 2px); z-index: 9999; opacity: 0.1;"></div>
+
+  <!-- Título del personaje -->
+  <div style="text-align: center; padding: 1rem; background: linear-gradient(180deg, #1b100e 0%, #241a17 100%); border-bottom: 2px solid #7b3b1d;">
+    <ion-label class="titulo">
+      <h1 style="color: #ffcc5c; font-family: 'Press Start 2P', monospace; font-size: 1.2rem; text-shadow: 2px 2px 0 #4a260c, 0 0 12px #ffb000; margin: 0;">
+        {{detallePersonaje.first_name}}
+      </h1>
+    </ion-label>
+  </div>
+
+  <ion-grid style="padding: 1rem;">
+
+    <ion-row>
+      <ion-col size="4" class="detalle">
+        <ion-card class="poster" style="
+          --background: #261912;
+          border: 3px solid #8c4520;
+          border-radius: 8px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+          margin: 0;
+          overflow: hidden;
+        ">
+          <img
+            [src]="detallePersonaje.avatar"
+            class="poster"
+            style="width: 100%; height: auto; display: block; filter: brightness(0.8) sepia(0.2) contrast(1.1);"
+            *ngIf="detallePersonaje.avatar"
+          />
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+        <ion-item style="
+          --background: #261912;
+          --color: #f5dba1;
+          border: 2px solid #7b3b1d;
+          border-radius: 6px;
+          margin-bottom: 0.5rem;
+          font-family: 'Press Start 2P', monospace;
+        ">
+          <ion-label style="color: #ffcc5c; font-size: 0.6rem; text-shadow: 1px 1px 0 #4a260c;">ARMAS:</ion-label>
+          <img
+            class="icono"
+            alt="Velocidad"
+            src="../../assets/img/bomba.png"
+            style="width: 24px; height: 24px; margin: 0 0.5rem; filter: drop-shadow(1px 1px 0 #4a260c);"
+          />
+          <ion-note slot="end" style="color: #ffb000; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">x10</ion-note>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <!-- Tarjeta de Descripción -->
+  <ion-card style="
+    --background: #261912;
+    margin: 1rem;
+    border: 3px solid #8c4520;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  ">
+    <ion-card-header style="
+      background: rgba(59, 30, 18, 0.8);
+      border-bottom: 2px solid #7b3b1d;
+      padding: 0.8rem;
+    ">
+      <ion-card-subtitle style="
+        color: #ffcc5c; 
+        font-family: 'Press Start 2P', monospace; 
+        font-size: 0.7rem;
+        text-shadow: 1px 1px 0 #4a260c;
+      ">DESCRIPCIÓN</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content style="padding: 1rem;">
+      <p style="
+        color: #f0d1a6; 
+        font-family: 'Press Start 2P', monospace; 
+        font-size: 0.6rem;
+        line-height: 1.5;
+        margin: 0;
+        text-shadow: 1px 1px 0 #3a1b08;
+      ">
+        {{ detalleGeneral.text }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Tarjeta de Estadísticas -->
+  <ion-card style="
+    --background: #261912;
+    margin: 1rem;
+    border: 3px solid #8c4520;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  ">
+    <ion-card-header style="
+      background: rgba(59, 30, 18, 0.8);
+      border-bottom: 2px solid #7b3b1d;
+      padding: 0.8rem;
+    ">
+      <ion-card-subtitle style="
+        color: #ffcc5c; 
+        font-family: 'Press Start 2P', monospace; 
+        font-size: 0.7rem;
+        text-shadow: 1px 1px 0 #4a260c;
+      ">ESTADÍSTICAS</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content style="padding: 0;">
+      <ion-list style="background: transparent; padding: 0;">
+        <ion-item style="
+          --background: transparent;
+          --color: #f5dba1;
+          border-bottom: 1px solid #7b3b1d;
+          padding: 0.8rem 1rem;
+          font-family: 'Press Start 2P', monospace;
+        ">
+          <img
+            slot="start"
+            class="icono"
+            alt="Salud"
+            src="../../assets/img/heart.png"
+            style="width: 20px; height: 20px; margin-right: 0.8rem; filter: drop-shadow(1px 1px 0 #4a260c);"
+          />
+          <ion-label style="color: #ffcc5c; font-size: 0.6rem; text-shadow: 1px 1px 0 #4a260c;">SALUD</ion-label>
+          <ion-note slot="end" style="color: #ff5555; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">6</ion-note>
+        </ion-item>
+
+        <ion-item style="
+          --background: transparent;
+          --color: #f5dba1;
+          border-bottom: 1px solid #7b3b1d;
+          padding: 0.8rem 1rem;
+          font-family: 'Press Start 2P', monospace;
+        ">
+          <img
+            slot="start"
+            class="icono"
+            alt="Daño"
+            src="../../assets/img/espada.png"
+            style="width: 20px; height: 20px; margin-right: 0.8rem; filter: drop-shadow(1px 1px 0 #4a260c);"
+          />
+          <ion-label style="color: #ffcc5c; font-size: 0.6rem; text-shadow: 1px 1px 0 #4a260c;">DAÑO</ion-label>
+          <ion-note slot="end" style="color: #ffb000; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">6</ion-note>
+        </ion-item>
+
+        <ion-item style="
+          --background: transparent;
+          --color: #f5dba1;
+          padding: 0.8rem 1rem;
+          font-family: 'Press Start 2P', monospace;
+        ">
+          <img
+            slot="start"
+            class="icono"
+            alt="Velocidad"
+            src="../../assets/img/ejecutar.png"
+            style="width: 20px; height: 20px; margin-right: 0.8rem; filter: drop-shadow(1px 1px 0 #4a260c);"
+          />
+          <ion-label style="color: #ffcc5c; font-size: 0.6rem; text-shadow: 1px 1px 0 #4a260c;">VELOCIDAD</ion-label>
+          <ion-note slot="end" style="color: #00ff88; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">6</ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer no-border style="background: #1b100e; border-top: 2px solid #7b3b1d;">
+  <ion-toolbar style="--background: #1b100e;">
+    <ion-buttons slot="start">
+      <ion-button (click)="regresar()" style="
+        --background: #3b1e12;
+        --color: #ffcc5c;
+        --border-radius: 6px;
+        border: 2px solid #ffb000;
+        font-family: 'Press Start 2P', monospace;
+        font-size: 0.6rem;
+        margin: 0.5rem;
+        min-height: 40px;
+      ">
+        <ion-icon slot="start" name="arrow-back-outline" style="color: #ffb000;"></ion-icon> 
+        <ion-label style="color: #ffcc5c; text-shadow: 1px 1px 0 #4a260c;">REGRESAR</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,230 @@
+/* Importar la fuente Press Start 2P */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.detalle {
+    position: relative;
+    top: -75px;
+    left: -10px;
+    margin-bottom: -75px;
+    transition: all 0.3s ease-in-out;
+}
+
+.detalle:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 10px rgba(255, 176, 0, 0.6));
+}
+
+.imagen {
+    height: 30vh;
+    width: 60vh;
+    filter: brightness(0.8) sepia(0.2) contrast(1.1);
+    border: 2px solid #7b3b1d;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.imagen:hover {
+    filter: brightness(1) sepia(0) contrast(1.2);
+    border-color: #ffb000;
+    box-shadow: 0 0 20px rgba(255, 176, 0, 0.4);
+}
+
+.titulo {
+    width: 100%;
+    position: absolute;
+    color: #ffcc5c;
+    background-color: #1b100e;
+    padding: 5px 5px 220px 5px;
+    font-family: 'Press Start 2P', monospace;
+    
+    /* Gradiente retro adaptado */
+    background: -moz-linear-gradient(top, rgba(27, 16, 14, 0.85) 0%, rgba(59, 30, 18, 0.9) 100%);
+    background: -webkit-linear-gradient(top, rgba(27, 16, 14, 0.85) 0%, rgba(59, 30, 18, 0.9) 100%);
+    background: linear-gradient(to bottom, rgba(27, 16, 14, 0.85) 10%, rgba(59, 30, 18, 0.9) 100%);
+    border-bottom: 3px solid #7b3b1d;
+    text-shadow: 2px 2px 0 #4a260c, 0 0 12px #ffb000;
+}
+
+.titulo h1 {
+    position: absolute;
+    top: 28px;
+    left: 20px;
+    font-weight: 100;
+    font-size: 1.8rem !important;
+    font-family: 'Press Start 2P', monospace !important;
+    color: #ffcc5c !important;
+    text-shadow: 2px 2px 0 #4a260c, 0 0 12px #ffb000;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.poster {
+    width: 110px !important;
+    height: 100px !important;
+    border: 2px solid #8c4520 !important;
+    border-radius: 6px !important;
+    background: #261912 !important;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.poster:hover {
+    border-color: #ffb000 !important;
+    box-shadow: 0 0 15px rgba(255, 176, 0, 0.4) !important;
+    transform: scale(1.05);
+}
+
+.poster img {
+    filter: brightness(0.8) sepia(0.2) contrast(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.poster:hover img {
+    filter: brightness(1) sepia(0) contrast(1.2);
+}
+
+.icono {
+    width: 30px;
+    height: 30px;
+    filter: drop-shadow(1px 1px 0 #4a260c);
+    transition: all 0.2s ease-in-out;
+}
+
+.icono:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 5px rgba(255, 176, 0, 0.8));
+}
+
+/* Efectos interactivos adicionales */
+ion-item {
+    transition: all 0.2s ease-in-out !important;
+}
+
+ion-item:hover {
+    --background: #3b1e12 !important;
+    border-color: #ffb000 !important;
+    transform: translateX(5px);
+}
+
+ion-card {
+    transition: all 0.3s ease-in-out !important;
+}
+
+ion-card:hover {
+    border-color: #ffb000 !important;
+    box-shadow: 0 0 20px rgba(255, 176, 0, 0.3) !important;
+}
+
+/* Efecto de pulsación para botones */
+ion-button {
+    transition: all 0.2s ease-in-out !important;
+    position: relative;
+    overflow: hidden;
+}
+
+ion-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 176, 0, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+ion-button:hover::before {
+    left: 100%;
+}
+
+ion-button:hover {
+    --background: #ffb000 !important;
+    --color: #2b1007 !important;
+    box-shadow: 0 0 15px rgba(255, 176, 0, 0.4) !important;
+    transform: translateY(-2px);
+}
+
+ion-button:active {
+    transform: translateY(0px);
+}
+
+/* Efecto de escaneo CRT para toda la página */
+.crt-effect::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 2px);
+    animation: flicker 0.12s infinite;
+    z-index: 9999;
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 0.1; }
+    20%, 24%, 55% { opacity: 0.25; }
+}
+
+/* Efecto de glitch para el título en hover */
+.titulo h1:hover {
+    animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .titulo h1 {
+        font-size: 1.2rem !important;
+        left: 10px;
+        top: 20px;
+    }
+    
+    .imagen {
+        height: 25vh;
+        width: 50vh;
+    }
+    
+    .detalle {
+        top: -60px;
+        margin-bottom: -60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo h1 {
+        font-size: 0.9rem !important;
+        left: 5px;
+        top: 15px;
+    }
+    
+    .imagen {
+        height: 20vh;
+        width: 40vh;
+    }
+    
+    .detalle {
+        top: -50px;
+        margin-bottom: -50px;
+        left: -5px;
+    }
+    
+    .poster {
+        width: 90px !important;
+        height: 80px !important;
+    }
+    
+    .icono {
+        width: 24px;
+        height: 24px;
+    }
+}

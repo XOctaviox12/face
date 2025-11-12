@@ -1,0 +1,112 @@
+/* Efectos para el botón jugar */
+.btn-jugar {
+  transition: all 0.3s ease-in-out !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-jurar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-jugar:hover::before {
+  left: 100%;
+}
+
+.btn-jugar:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 176, 0, 0.6) !important;
+  --background: linear-gradient(135deg, #ffc400 0%, #ff3000 100%) !important;
+}
+
+.btn-jugar:active {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 5px 15px rgba(255, 176, 0, 0.4) !important;
+}
+
+/* Efecto de pulsación constante */
+@keyframes pulse-glow {
+  0% { box-shadow: 0 6px 20px rgba(255, 176, 0, 0.4); }
+  50% { box-shadow: 0 6px 30px rgba(255, 176, 0, 0.7); }
+  100% { box-shadow: 0 6px 20px rgba(255, 176, 0, 0.4); }
+}
+
+.btn-jugar {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Efectos para botones secundarios */
+ion-button {
+  transition: all 0.2s ease-in-out !important;
+}
+
+ion-button:hover {
+  --background: #ffb000 !important;
+  --color: #2b1007 !important;
+  box-shadow: 0 0 15px rgba(255, 176, 0, 0.4) !important;
+  transform: translateY(-2px);
+}
+
+/* Efecto de escaneo para la imagen */
+img {
+  position: relative;
+  overflow: hidden;
+}
+
+img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, 
+    transparent 0%, 
+    transparent 50%, 
+    rgba(255, 176, 0, 0.1) 50%, 
+    rgba(255, 176, 0, 0.1) 51%, 
+    transparent 51%, 
+    transparent 100%);
+  background-size: 100% 4px;
+  animation: scan 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.1rem !important;
+  }
+  
+  .btn-jugar {
+    font-size: 0.8rem !important;
+    min-height: 55px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 0.9rem !important;
+  }
+  
+  .btn-jugar {
+    font-size: 0.7rem !important;
+    min-height: 50px !important;
+  }
+  
+  .instruction-box {
+    padding: 1rem !important;
+  }
+}
