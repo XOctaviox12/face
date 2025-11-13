@@ -1,9 +1,9 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-interface Elemento{
-icono: string;
-nombre:string;
-ruta:string;
+interface Elemento {
+  icono: string;
+  nombre: string;
+  ruta: string;
 }
 
 @Component({
@@ -14,37 +14,43 @@ ruta:string;
 })
 
 
-export class AppComponent{
+export class AppComponent {
 
-elementos: Elemento[]=[
+  elementos: Elemento[] = [
 
-{
-  //Primer elemento de la lista
-  icono: 'Home',
-  nombre: 'Inicio',
-  ruta: '/principal'
-},
-{ //Primer elemento de la lista
-icono: 'newspaper-outline',
-nombre:'Novedades ',
-ruta:'/social'
-},
-{ //Primer elemento de la lista
-icono: 'information-circle-outline',
-nombre:'Información',
-ruta:'/extras'
-},
-{
-  //Primer elemento de la lista
-  icono: 'game-controller-outline',
-  nombre: 'Jugar',
-  ruta: '/juego'
-},
+    {
+      //Primer elemento de la lista
+      icono: 'Home',
+      nombre: 'Inicio',
+      ruta: '/principal'
+    },
+    { //Primer elemento de la lista
+      icono: 'newspaper-outline',
+      nombre: 'Novedades ',
+      ruta: '/social'
+    },
+    { //Primer elemento de la lista
+      icono: 'information-circle-outline',
+      nombre: 'Información',
+      ruta: '/extras'
+    },
+    {
+      //Primer elemento de la lista
+      icono: 'game-controller-outline',
+      nombre: 'Jugar',
+      ruta: '/juego'
+    },
+    {
+      //Primer elemento de la lista
+      icono: 'chatbubbles-outline',
+      nombre: 'Comunidad',
+      ruta: '/comunidad'
+    },
 
 
 
-];
+  ];
 
-  constructor() {}
-  
+  constructor() { }
+
 }

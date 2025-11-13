@@ -40,7 +40,11 @@ const routes: Routes = [
     path: 'juego',
     loadChildren: () => import('./pages/juego/juego.module')
       .then(m => m.JuegoPageModule)
+  },  {
+    path: 'comunidad',
+    loadChildren: () => import('./pages/comunidad/comunidad.module').then( m => m.ComunidadPageModule)
   },
+
 ];
 
 @NgModule({
