@@ -1,19 +1,25 @@
+<!-- Encabezado de la página -->
 <ion-header [translucent]="true">
+  <!-- Barra superior con fondo personalizado -->
   <ion-toolbar style="--background: #1b100e; border-bottom: 2px solid #7b3b1d;">
+    <!-- Botón del menú lateral -->
     <ion-buttons slot="start">
       <ion-menu-button menu="first" style="color: #ffcc5c;"></ion-menu-button>
     </ion-buttons>
+    <!-- Título principal -->
     <ion-title style="color: #ffcc5c; font-family: 'Press Start 2P', monospace; font-size: 0.9rem; text-shadow: 1px 1px 0 #4a260c;">
       INFORMACIÓN
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
+<!-- Contenido principal -->
 <ion-content style="--background: #241a17; font-family: 'Press Start 2P', monospace;">
-  <!-- Efecto CRT -->
+
+  <!-- Efecto visual tipo CRT (pantalla vieja) -->
   <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: repeating-linear-gradient(0deg,rgba(0,0,0,0.1) 0px,rgba(0,0,0,0.1) 1px,transparent 2px); z-index: 9999; opacity: 0.1;"></div>
 
-  <!-- Header decorativo -->
+  <!-- Cabecera decorativa con texto -->
   <div style="text-align: center; padding: 1.5rem 1rem; background: linear-gradient(180deg, #1b100e 0%, #241a17 100%); border-bottom: 2px solid #7b3b1d;">
     <h1 style="color: #ffcc5c; font-size: 1rem; text-shadow: 2px 2px 0 #4a260c, 0 0 12px #ffb000; margin: 0 0 0.5rem 0;">
       PERSONAJES FACE-BOMB
@@ -23,6 +29,7 @@
     </p>
   </div>
 
+  <!-- Tarjeta para cada personaje -->
   <ion-card
     (click)="verDetalle(personaje.id)"
     *ngFor="let personaje of personajesRecientes"
@@ -39,7 +46,8 @@
     "
     class="personaje-card"
   >
-    <!-- Badge de personaje -->
+
+    <!-- Etiqueta de “PERSONAJE” -->
     <div style="
       position: absolute;
       top: 10px;
@@ -56,7 +64,7 @@
       PERSONAJE
     </div>
 
-    <!-- Imagen con filtro retro -->
+    <!-- Imagen del personaje -->
     <img 
       [src]="personaje.imagen" 
       style="
@@ -70,11 +78,13 @@
       class="card-image"
     />
     
+    <!-- Encabezado de la tarjeta -->
     <ion-card-header style="
       padding: 1.2rem; 
       background: linear-gradient(180deg, rgba(59, 30, 18, 0.9) 0%, rgba(38, 25, 18, 1) 100%);
       border-top: 1px solid #7b3b1d;
     ">
+      <!-- Nombre -->
       <ion-card-title style="
         color: #ffcc5c; 
         font-family: 'Press Start 2P', monospace; 
@@ -86,6 +96,7 @@
         {{ personaje.nombre }}
       </ion-card-title>
       
+      <!-- Apellido -->
       <ion-card-subtitle style="
         color: #f0d1a6; 
         font-family: 'Press Start 2P', monospace; 
@@ -97,7 +108,7 @@
         {{ personaje.apellido }}
       </ion-card-subtitle>
 
-      <!-- Stats mini -->
+      <!-- Mini estadísticas -->
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid #7b3b1d;">
         <div style="display: flex; align-items: center;">
           <ion-icon name="heart" style="color: #ff5555; font-size: 0.7rem; margin-right: 0.3rem;"></ion-icon>
@@ -114,7 +125,7 @@
       </div>
     </ion-card-header>
 
-    <!-- Efecto de brillo al pasar el mouse -->
+    <!-- Efecto de brillo al pasar el cursor -->
     <div style="
       position: absolute;
       top: 0;
@@ -142,7 +153,7 @@
     " class="card-border-glow"></div>
   </ion-card>
 
-  <!-- Mensaje si no hay personajes -->
+  <!-- Mensaje mostrado si no hay personajes -->
   <div *ngIf="personajesRecientes.length === 0" style="
     text-align: center; 
     padding: 4rem 1rem;
@@ -162,7 +173,7 @@
     </p>
   </div>
 
-  <!-- Footer decorativo -->
+  <!-- Pie de página decorativo -->
   <div style="text-align: center; padding: 2rem 1rem; border-top: 2px solid #7b3b1d; margin-top: 2rem;">
     <p style="color: #f0d1a6; font-size: 0.5rem; text-shadow: 1px 1px 0 #3a1b08; margin: 0;">
       FACE-BOMB © 2024 - UNA AVENTURA DE DULCES Y CAOS

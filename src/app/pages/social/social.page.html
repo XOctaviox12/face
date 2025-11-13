@@ -1,19 +1,25 @@
+<!-- Encabezado principal -->
 <ion-header [translucent]="true">
+  <!-- Barra superior con fondo oscuro y borde decorativo -->
   <ion-toolbar style="--background: #1b100e; border-bottom: 2px solid #7b3b1d;">
+    <!-- Botón del menú lateral -->
     <ion-buttons slot="start">
       <ion-menu-button menu="first" style="color: #ffcc55;"></ion-menu-button>
     </ion-buttons>
+    <!-- Título principal de la página -->
     <ion-title style="color: #ffcc5c; font-family: 'Press Start 2P', monospace; font-size: 0.9rem; text-shadow: 1px 1px 0 #4a260c;">
       NOVEDADES
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
+<!-- Contenido principal de la página -->
 <ion-content [fullscreen]="true" style="--background: #241a17; font-family: 'Press Start 2P', monospace;">
-  <!-- Efecto CRT -->
+
+  <!-- Efecto CRT de líneas para estilo retro -->
   <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: repeating-linear-gradient(0deg,rgba(0,0,0,0.1) 0px,rgba(0,0,0,0.1) 1px,transparent 2px); z-index: 9999; opacity: 0.1;"></div>
 
-  <!-- Header condense -->
+  <!-- Encabezado condensado para scroll -->
   <ion-header collapse="condense">
     <ion-toolbar style="--background: rgba(27, 16, 14, 0.9);">
       <ion-title size="large" style="color: #ffcc5c; font-family: 'Press Start 2P', monospace; font-size: 1.2rem; text-shadow: 2px 2px 0 #4a260c, 0 0 12px #ffb000;">
@@ -22,41 +28,26 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- Contenido principal -->
+  <!-- Contenedor principal del contenido -->
   <div style="padding: 1rem;">
 
-    <!-- Última Actualización -->
-    <ion-card style="
-      --background: #261912;
-      margin: 1rem 0 2rem 0;
-      border: 3px solid #ffb000;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(255, 176, 0, 0.3);
-    ">
-      <ion-card-header style="
-        background: linear-gradient(135deg, #ffb000 0%, #ff4800 100%);
-        border-bottom: 2px solid #803000;
-        padding: 1rem;
-      ">
-        <ion-card-title style="
-          color: #2b1007;
-          font-family: 'Press Start 2P', monospace;
-          font-size: 0.8rem;
-          text-shadow: 1px 1px 0 #ffe3b3;
-        ">
+    <!-- Tarjeta de Última Actualización -->
+    <ion-card style="--background: #261912; margin: 1rem 0 2rem 0; border: 3px solid #ffb000; border-radius: 12px; box-shadow: 0 6px 20px rgba(255, 176, 0, 0.3);">
+      <!-- Encabezado de la tarjeta -->
+      <ion-card-header style="background: linear-gradient(135deg, #ffb000 0%, #ff4800 100%); border-bottom: 2px solid #803000; padding: 1rem;">
+        <!-- Título -->
+        <ion-card-title style="color: #2b1007; font-family: 'Press Start 2P', monospace; font-size: 0.8rem; text-shadow: 1px 1px 0 #ffe3b3;">
           🚀 ÚLTIMA ACTUALIZACIÓN - v1.2.0
         </ion-card-title>
-        <ion-card-subtitle style="
-          color: #2b1007;
-          font-family: 'Press Start 2P', monospace;
-          font-size: 0.5rem;
-          margin-top: 0.5rem;
-        ">
+        <!-- Subtítulo -->
+        <ion-card-subtitle style="color: #2b1007; font-family: 'Press Start 2P', monospace; font-size: 0.5rem; margin-top: 0.5rem;">
           PUBLICADO: 09 NOV 2024
         </ion-card-subtitle>
       </ion-card-header>
-      
+
+      <!-- Contenido de la tarjeta -->
       <ion-card-content style="padding: 1.5rem;">
+        <!-- Lista de novedades -->
         <div style="color: #f0d1a6; font-size: 0.6rem; line-height: 1.6;">
           <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
             <span style="color: #ffb000; margin-right: 0.5rem;">►</span>
@@ -78,31 +69,18 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Próximas Características -->
-    <ion-card style="
-      --background: #261912;
-      margin: 1rem 0;
-      border: 3px solid #00ff88;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 255, 136, 0.2);
-    ">
-      <ion-card-header style="
-        background: linear-gradient(135deg, #00ff88 0%, #00a858 100%);
-        border-bottom: 2px solid #006633;
-        padding: 1rem;
-      ">
-        <ion-card-title style="
-          color: #002b14;
-          font-family: 'Press Start 2P', monospace;
-          font-size: 0.7rem;
-          text-shadow: 1px 1px 0 #aaffcc;
-        ">
+    <!-- Tarjeta Próximamente -->
+    <ion-card style="--background: #261912; margin: 1rem 0; border: 3px solid #00ff88; border-radius: 12px; box-shadow: 0 6px 20px rgba(0, 255, 136, 0.2);">
+      <ion-card-header style="background: linear-gradient(135deg, #00ff88 0%, #00a858 100%); border-bottom: 2px solid #006633; padding: 1rem;">
+        <ion-card-title style="color: #002b14; font-family: 'Press Start 2P', monospace; font-size: 0.7rem; text-shadow: 1px 1px 0 #aaffcc;">
           🔮 PRÓXIMAMENTE
         </ion-card-title>
       </ion-card-header>
-      
+
+      <!-- Contenido Próximamente -->
       <ion-card-content style="padding: 1.5rem;">
         <div style="color: #f0d1a6; font-size: 0.6rem; line-height: 1.6;">
+          <!-- Modo multijugador -->
           <div style="display: flex; align-items: center; margin-bottom: 1rem; padding: 0.8rem; background: rgba(59, 30, 18, 0.6); border-radius: 6px;">
             <ion-icon name="calendar" style="color: #00ff88; margin-right: 0.8rem; font-size: 0.8rem;"></ion-icon>
             <div>
@@ -110,7 +88,7 @@
               <div>COMPITE CON TUS AMIGOS EN TIEMPO REAL - ETA: DIC 2024</div>
             </div>
           </div>
-          
+          <!-- Logros -->
           <div style="display: flex; align-items: center; margin-bottom: 1rem; padding: 0.8rem; background: rgba(59, 30, 18, 0.6); border-radius: 6px;">
             <ion-icon name="trophy" style="color: #ffb000; margin-right: 0.8rem; font-size: 0.8rem;"></ion-icon>
             <div>
@@ -118,7 +96,7 @@
               <div>DESBLOQUEA LOGROS SECRETOS Y RECOMPENSAS ESPECIALES</div>
             </div>
           </div>
-          
+          <!-- Personajes legendarios -->
           <div style="display: flex; align-items: center; padding: 0.8rem; background: rgba(59, 30, 18, 0.6); border-radius: 6px;">
             <ion-icon name="star" style="color: #ff55ff; margin-right: 0.8rem; font-size: 0.8rem;"></ion-icon>
             <div>
@@ -130,30 +108,16 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Eventos Actuales -->
-    <ion-card style="
-      --background: #261912;
-      margin: 1rem 0;
-      border: 3px solid #ff55ff;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(255, 85, 255, 0.2);
-    ">
-      <ion-card-header style="
-        background: linear-gradient(135deg, #ff55ff 0%, #aa00aa 100%);
-        border-bottom: 2px solid #660066;
-        padding: 1rem;
-      ">
-        <ion-card-title style="
-          color: #ffffff;
-          font-family: 'Press Start 2P', monospace;
-          font-size: 0.7rem;
-          text-shadow: 1px 1px 0 #330033;
-        ">
+    <!-- Tarjeta Evento Especial -->
+    <ion-card style="--background: #261912; margin: 1rem 0; border: 3px solid #ff55ff; border-radius: 12px; box-shadow: 0 6px 20px rgba(255, 85, 255, 0.2);">
+      <ion-card-header style="background: linear-gradient(135deg, #ff55ff 0%, #aa00aa 100%); border-bottom: 2px solid #660066; padding: 1rem;">
+        <ion-card-title style="color: #ffffff; font-family: 'Press Start 2P', monospace; font-size: 0.7rem; text-shadow: 1px 1px 0 #330033;">
           🎉 EVENTO ESPECIAL
         </ion-card-title>
       </ion-card-header>
-      
+
       <ion-card-content style="padding: 1.5rem;">
+        <!-- Información del evento -->
         <div style="text-align: center; margin-bottom: 1rem;">
           <div style="color: #ffcc5c; font-size: 0.8rem; margin-bottom: 0.5rem; text-shadow: 1px 1px 0 #4a260c;">
             "SEMANA DE LOS DULCES"
@@ -162,7 +126,7 @@
             DEL 15 AL 22 DE NOVIEMBRE
           </div>
         </div>
-        
+        <!-- Beneficios del evento -->
         <div style="color: #f0d1a6; font-size: 0.6rem; line-height: 1.6;">
           <div style="display: flex; align-items: flex-start; margin-bottom: 0.8rem;">
             <span style="color: #ff55ff; margin-right: 0.5rem;">★</span>
@@ -181,7 +145,7 @@
             <span>NUEVOS LOGROS TEMPORALES DISPONIBLES</span>
           </div>
         </div>
-        
+        <!-- Mensaje final del evento -->
         <div style="text-align: center; margin-top: 1.5rem; padding: 1rem; background: rgba(255, 85, 255, 0.1); border-radius: 6px;">
           <div style="color: #ffcc5c; font-size: 0.5rem; margin-bottom: 0.3rem;">
             ¡NO TE PIERDAS ESTE EVENTO ESPECIAL!
@@ -193,30 +157,16 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Estadísticas de la Comunidad -->
-    <ion-card style="
-      --background: #261912;
-      margin: 1rem 0;
-      border: 3px solid #42a0d8;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(66, 160, 216, 0.2);
-    ">
-      <ion-card-header style="
-        background: linear-gradient(135deg, #42a0d8 0%, #1a5a8a 100%);
-        border-bottom: 2px solid #0d3a5c;
-        padding: 1rem;
-      ">
-        <ion-card-title style="
-          color: #ffffff;
-          font-family: 'Press Start 2P', monospace;
-          font-size: 0.7rem;
-          text-shadow: 1px 1px 0 #0d3a5c;
-        ">
+    <!-- Tarjeta Estadísticas de la comunidad -->
+    <ion-card style="--background: #261912; margin: 1rem 0; border: 3px solid #42a0d8; border-radius: 12px; box-shadow: 0 6px 20px rgba(66, 160, 216, 0.2);">
+      <ion-card-header style="background: linear-gradient(135deg, #42a0d8 0%, #1a5a8a 100%); border-bottom: 2px solid #0d3a5c; padding: 1rem;">
+        <ion-card-title style="color: #ffffff; font-family: 'Press Start 2P', monospace; font-size: 0.7rem; text-shadow: 1px 1px 0 #0d3a5c;">
           📊 ESTADÍSTICAS COMUNITARIAS
         </ion-card-title>
       </ion-card-header>
-      
+
       <ion-card-content style="padding: 1.5rem;">
+        <!-- Cuadro de estadísticas -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; color: #f0d1a6; font-size: 0.6rem;">
           <div style="text-align: center; padding: 1rem; background: rgba(59, 30, 18, 0.6); border-radius: 6px;">
             <div style="color: #ffcc5c; font-size: 0.9rem; margin-bottom: 0.3rem;">15,847</div>
@@ -238,25 +188,9 @@
       </ion-card-content>
     </ion-card>
 
-    <!-- Call to Action -->
+    <!-- Botón para acceder al juego -->
     <div style="text-align: center; margin: 2rem 0;">
-      <ion-button 
-        (click)="irAlJuego()"
-        style="
-          --background: linear-gradient(135deg, #ffb000 0%, #ff4800 100%);
-          --color: #2b1007;
-          --border-radius: 12px;
-          --padding-top: 1rem;
-          --padding-bottom: 1rem;
-          --padding-start: 1.5rem;
-          --padding-end: 1.5rem;
-          font-family: 'Press Start 2P', monospace;
-          font-size: 0.7rem;
-          text-shadow: 1px 1px 0 #ffe3b3;
-          border: 3px solid #803000;
-          box-shadow: 0 6px 20px rgba(255, 176, 0, 0.4);
-        "
-      >
+      <ion-button (click)="irAlJuego()" style="--background: linear-gradient(135deg, #ffb000 0%, #ff4800 100%); --color: #2b1007; --border-radius: 12px; --padding-top: 1rem; --padding-bottom: 1rem; --padding-start: 1.5rem; --padding-end: 1.5rem; font-family: 'Press Start 2P', monospace; font-size: 0.7rem; text-shadow: 1px 1px 0 #ffe3b3; border: 3px solid #803000; box-shadow: 0 6px 20px rgba(255, 176, 0, 0.4);">
         <ion-icon name="play-circle" slot="start"></ion-icon>
         ¡ÚNETE A LA DIVERSIÓN!
       </ion-button>
@@ -264,7 +198,7 @@
 
   </div>
 
-  <!-- Footer -->
+  <!-- Pie de página -->
   <div style="text-align: center; padding: 2rem 1rem; border-top: 2px solid #7b3b1d; margin-top: 2rem;">
     <p style="color: #f0d1a6; font-size: 0.5rem; text-shadow: 1px 1px 0 #3a1b08; margin: 0;">
       FACE-BOMB © 2024 - MANTENTE AL DÍA CON LAS ÚLTIMAS NOVEDADES

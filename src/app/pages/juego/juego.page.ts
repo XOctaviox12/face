@@ -10,15 +10,16 @@ import { IonHeader } from "@ionic/angular/standalone";
 })
 export class JuegoPage {
 
+  // Se inyecta el Router de Angular para manejar la navegación interna entre rutas
   constructor(private router: Router) {}
 
+  // Abre el enlace del juego externo en una nueva pestaña del navegador
   irAlJuego() {
-    // Redirigir al juego externo
     window.open('https://facebomb.onrender.com/', '_blank');
   }
 
+  // Realiza la navegación interna hacia una ruta dentro de la aplicación
   navegar(ruta: string) {
-    // Navegación interna
     this.router.navigate([ruta]);
   }
 }
