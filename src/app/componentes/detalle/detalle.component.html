@@ -6,7 +6,7 @@
   <div style="text-align: center; padding: 1rem; background: linear-gradient(180deg, #1b100e 0%, #241a17 100%); border-bottom: 2px solid #7b3b1d;">
     <ion-label class="titulo">
       <h1 style="color: #ffcc5c; font-family: 'Press Start 2P', monospace; font-size: 1.2rem; text-shadow: 2px 2px 0 #4a260c, 0 0 12px #ffb000; margin: 0;">
-        {{detallePersonaje.first_name}}
+        {{detallePersonaje.nombre}}
       </h1>
     </ion-label>
   </div>
@@ -24,10 +24,10 @@
           overflow: hidden;
         ">
           <img
-            [src]="detallePersonaje.avatar"
+            [src]="detallePersonaje.imagen"
             class="poster"
             style="width: 100%; height: auto; display: block; filter: brightness(0.8) sepia(0.2) contrast(1.1);"
-            *ngIf="detallePersonaje.avatar"
+            *ngIf="detallePersonaje.imagen"
           />
         </ion-card>
       </ion-col>
@@ -48,7 +48,7 @@
             src="../../assets/img/bomba.png"
             style="width: 24px; height: 24px; margin: 0 0.5rem; filter: drop-shadow(1px 1px 0 #4a260c);"
           />
-          <ion-note slot="end" style="color: #ffb000; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">x10</ion-note>
+          <ion-note slot="end" style="color: #ffb000; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">{{detallePersonaje.armas}}</ion-note>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -69,8 +69,8 @@
       padding: 0.8rem;
     ">
       <ion-card-subtitle style="
-        color: #ffcc5c; 
-        font-family: 'Press Start 2P', monospace; 
+        color: #ffcc5c;
+        font-family: 'Press Start 2P', monospace;
         font-size: 0.7rem;
         text-shadow: 1px 1px 0 #4a260c;
       ">DESCRIPCIÓN</ion-card-subtitle>
@@ -78,14 +78,14 @@
 
     <ion-card-content style="padding: 1rem;">
       <p style="
-        color: #f0d1a6; 
-        font-family: 'Press Start 2P', monospace; 
+        color: #f0d1a6;
+        font-family: 'Press Start 2P', monospace;
         font-size: 0.6rem;
         line-height: 1.5;
         margin: 0;
         text-shadow: 1px 1px 0 #3a1b08;
       ">
-        {{ detalleGeneral.text }}
+        {{ detallePersonaje.descripcion }}
       </p>
     </ion-card-content>
   </ion-card>
@@ -104,8 +104,8 @@
       padding: 0.8rem;
     ">
       <ion-card-subtitle style="
-        color: #ffcc5c; 
-        font-family: 'Press Start 2P', monospace; 
+        color: #ffcc5c;
+        font-family: 'Press Start 2P', monospace;
         font-size: 0.7rem;
         text-shadow: 1px 1px 0 #4a260c;
       ">ESTADÍSTICAS</ion-card-subtitle>
@@ -128,7 +128,7 @@
             style="width: 20px; height: 20px; margin-right: 0.8rem; filter: drop-shadow(1px 1px 0 #4a260c);"
           />
           <ion-label style="color: #ffcc5c; font-size: 0.6rem; text-shadow: 1px 1px 0 #4a260c;">SALUD</ion-label>
-          <ion-note slot="end" style="color: #ff5555; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">6</ion-note>
+          <ion-note slot="end" style="color: #ff5555; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">{{detallePersonaje.salud}}</ion-note>
         </ion-item>
 
         <ion-item style="
@@ -146,7 +146,7 @@
             style="width: 20px; height: 20px; margin-right: 0.8rem; filter: drop-shadow(1px 1px 0 #4a260c);"
           />
           <ion-label style="color: #ffcc5c; font-size: 0.6rem; text-shadow: 1px 1px 0 #4a260c;">DAÑO</ion-label>
-          <ion-note slot="end" style="color: #ffb000; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">6</ion-note>
+          <ion-note slot="end" style="color: #ffb000; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">{{detallePersonaje.salud}}</ion-note>
         </ion-item>
 
         <ion-item style="
@@ -163,7 +163,7 @@
             style="width: 20px; height: 20px; margin-right: 0.8rem; filter: drop-shadow(1px 1px 0 #4a260c);"
           />
           <ion-label style="color: #ffcc5c; font-size: 0.6rem; text-shadow: 1px 1px 0 #4a260c;">VELOCIDAD</ion-label>
-          <ion-note slot="end" style="color: #00ff88; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">6</ion-note>
+          <ion-note slot="end" style="color: #00ff88; font-size: 0.7rem; text-shadow: 1px 1px 0 #4a260c;">{{detallePersonaje.velocidad}}</ion-note>
         </ion-item>
       </ion-list>
     </ion-card-content>
@@ -184,7 +184,7 @@
         margin: 0.5rem;
         min-height: 40px;
       ">
-        <ion-icon slot="start" name="arrow-back-outline" style="color: #ffb000;"></ion-icon> 
+        <ion-icon slot="start" name="arrow-back-outline" style="color: #ffb000;"></ion-icon>
         <ion-label style="color: #ffcc5c; text-shadow: 1px 1px 0 #4a260c;">REGRESAR</ion-label>
       </ion-button>
     </ion-buttons>

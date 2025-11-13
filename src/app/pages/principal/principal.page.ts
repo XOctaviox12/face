@@ -13,7 +13,7 @@ import { NavController } from '@ionic/angular'; // Opcional, pero bueno para la 
 export class PrincipalPage implements OnInit {
 
   // Variable de estado para controlar la visibilidad del video
-  showVideo: boolean = false; 
+  showVideo: boolean = false;
 
   elementos: Elemento[]=[
     { //Primer elemento de la lista
@@ -43,7 +43,7 @@ export class PrincipalPage implements OnInit {
   // LÓGICA PARA MOSTRAR/OCULTAR EL TRÁILER (basado en peticiones anteriores)
   toggleVideo() {
     // Invierte el valor de la variable de estado
-    this.showVideo = !this.showVideo; 
+    this.showVideo = !this.showVideo;
   }
 
   // LÓGICA PARA MANEJAR LA NAVEGACIÓN DE LOS BOTONES
@@ -51,9 +51,8 @@ export class PrincipalPage implements OnInit {
   navegar(ruta: string) {
     if (ruta.startsWith('http')) {
       // Si es una URL externa, abre en una nueva pestaña
-      window.open(ruta, '_system'); 
+      window.open(ruta, '_system');
     } else {
-      // Si es una ruta interna (como /social o /extras), usa el router de Angular
       this.navCtrl.navigateForward(ruta);
     }
   }

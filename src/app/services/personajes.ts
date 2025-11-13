@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RespuestaBD, RespuestaDetalle } from '../interfaces/interfaces';
-import { Firestore, collection, collectionData, doc,
-docData } from '@angular/fire/firestore';
+import {
+  Firestore, collection, collectionData, doc,
+  docData
+} from '@angular/fire/firestore';
 
 
 
@@ -13,7 +15,7 @@ export class Personajes {
 
   constructor(
     private http: HttpClient,
-    private firestore:Firestore
+    private firestore: Firestore
 
 
   ) { }
@@ -30,8 +32,14 @@ export class Personajes {
     });
   }
 
- getPersonajes() {
-  const personajesRef = collection(this.firestore, 'personajesFacebomb');
-  return collectionData(personajesRef, { idField: 'id' }); 
-}
+  getPersonajes() {
+    const personajesRef = collection(this.firestore, 'personajesFacebomb');
+    return collectionData(personajesRef, { idField: 'id' });
+  }
+  getPersonajesDetalle(id: string) {
+    //Consulta de la colección el documento con el id que recibimos
+    const personajeRef = doc(this.firestore, `personajesFacebomb/${id}`);
+    //Extraemos los datos del objeto encontrado y lo retornamos
+    return docData(personajeRef);
+  }
 }

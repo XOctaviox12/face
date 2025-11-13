@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Detalle, InfGeneral, RespuestaDetalle } from 'src/app/interfaces/interfaces';
 import { Personajes } from 'src/app/services/personajes';
 import { ModalController } from '@ionic/angular';
+import { personajesFirebase } from '../../interfaces/interfaces';
+
 
 @Component({
   selector: 'app-detalle',
@@ -10,10 +12,8 @@ import { ModalController } from '@ionic/angular';
   standalone: false,
 })
 export class DetalleComponent  implements OnInit {
-
   @Input() id: any;
-
-  detallePersonaje={} as Detalle;
+  detallePersonaje={} as personajesFirebase;
   detalleGeneral={} as InfGeneral;
 
 
@@ -27,12 +27,9 @@ export class DetalleComponent  implements OnInit {
   }
 
   ngOnInit() {
-    this.detalle.getDetalle(this.id)
-    .subscribe((respuesta:RespuestaDetalle)=>{
-      console.log('Detalle personaje', respuesta)
-      this.detallePersonaje=respuesta.data;
-      this.detalleGeneral=respuesta.suport;
-    });
+    this.detalle.getPersonajesDetalle(this.id).subscribe(respuesta => {
+      this.detallePersonaje = <personajesFirebase> respuesta ;
+    })
   }
 
 }
