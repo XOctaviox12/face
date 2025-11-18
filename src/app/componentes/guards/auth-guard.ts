@@ -1,7 +1,7 @@
 // Importamos los decoradores y dependencias necesarias desde Angular y RxJS
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { map } from 'rxjs/operators';
 
 // Marcamos la clase como un servicio inyectable
@@ -22,10 +22,10 @@ export class AuthGuard implements CanActivate { // Implementa la interfaz CanAct
       map(user => {
         // Si el usuario existe (está autenticado), se permite el acceso
         if (user) return true;
-        
+
         // Si no hay usuario autenticado, redirigimos al login
         this.router.navigate(['/login']);
-        
+
         // Y devolvemos 'false' para bloquear el acceso
         return false;
       })

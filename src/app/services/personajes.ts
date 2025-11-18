@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RespuestaBD, RespuestaDetalle } from '../interfaces/interfaces';
-import {
-  Firestore, collection, collectionData, doc, docData
+import { RespuestaBD, RespuestaDetalle } from '../componentes/interfaces/interfaces';
+import {Firestore, collection, collectionData, doc, docData
 } from '@angular/fire/firestore';
 
 @Injectable({

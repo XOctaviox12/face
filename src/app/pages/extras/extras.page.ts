@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Personajes } from 'src/app/services/personajes';
-import { Personajes as PersonajesApi } from '../../interfaces/interfaces';
-import { RespuestaBD } from '../../interfaces/interfaces';
+import { Personajes as PersonajesApi } from '../../componentes/interfaces/interfaces';
+import { RespuestaBD } from '../../componentes/interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 import { DetalleComponent } from 'src/app/componentes/detalle/detalle.component';
-import { personajesFirebase } from '../../interfaces/interfaces';
+import { personajesFirebase } from '../../componentes/interfaces/interfaces';
 
 @Component({
   standalone: false,

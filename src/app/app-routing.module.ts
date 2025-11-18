@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { PrincipalPageModule } from './pages/principal/principal.module';
-import { AuthGuard } from './guards/auth-guard';
+import { AuthGuard } from '../app/componentes/guards/auth-guard';
 
 // Definición de las rutas principales de la aplicación
 const routes: Routes = [
@@ -54,7 +54,8 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },  {
+  },
+  {
     path: 'tienda',
     loadChildren: () => import('./pages/tienda/tienda.module').then( m => m.TiendaPageModule)
   },

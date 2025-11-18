@@ -1,4 +1,4 @@
-import { DetalleComponent } from "../componentes/detalle/detalle.component";
+import { DetalleComponent } from "../detalle/detalle.component";
 
 // Interface que define la estructura de la respuesta general proveniente de una base de datos o API
 export interface RespuestaBD {

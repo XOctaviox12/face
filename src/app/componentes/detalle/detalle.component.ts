@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Detalle, InfGeneral, RespuestaDetalle } from 'src/app/interfaces/interfaces';
+import { Detalle, InfGeneral, RespuestaDetalle } from 'src/app/componentes/interfaces/interfaces';
 import { Personajes } from 'src/app/services/personajes';
 import { ModalController } from '@ionic/angular';
-import { personajesFirebase } from '../../interfaces/interfaces';
+import { personajesFirebase } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-detalle',
