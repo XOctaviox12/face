@@ -1,33 +1,232 @@
 <ion-header [translucent]="true">
-  <ion-toolbar style="--background: #1b100e; border-bottom: 2px solid #7b3b1d;">
+  <ion-toolbar style="--background: #1b100e; border-bottom: 2px solid #7b3b1d">
     <ion-buttons slot="start">
-      <ion-menu-button menu="first" style="color: #ffcc5c;"></ion-menu-button>
+      <ion-menu-button
+        menu="first"
+        style="color: #ffcc5c; font-size: clamp(0.8rem, 4vw, 1.2rem)"
+      ></ion-menu-button>
     </ion-buttons>
-    <ion-title style="color: #ffcc5c; font-family: 'Press Start 2P', monospace; font-size: 0.9rem; text-shadow: 1px 1px 0 #4a260c;">
-      CARRITOy
+    <ion-title
+      style="
+        color: #ffcc5c;
+        font-family: 'Press Start 2P', monospace;
+        font-size: clamp(0.7rem, 3.5vw, 0.9rem);
+        text-shadow: 1px 1px 0 #4a260c;
+        text-align: center;
+        padding: 0.5rem;
+      "
+    >
+      CARRITO
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="container">
-    <h1 class="titulo">TU CARRITO</h1>
+<ion-content [fullscreen]="true" style="--background: #241a17">
+  <!-- Efecto CRT -->
+  <div
+    style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 2px
+      );
+      z-index: 9999;
+      opacity: 0.1;
+    "
+  ></div>
 
-    <ion-item *ngFor="let c of carrito">
-      <ion-label>
-        <h2>Producto: {{ c.productoId }}</h2>
-        <p>Cantidad: {{ c.cantidad }}</p>
-      </ion-label>
+  <div
+    class="container"
+    style="
+      padding: clamp(0.8rem, 3vw, 1rem);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    "
+  >
+    <h1
+      class="titulo"
+      style="
+        color: #ffcc5c;
+        font-family: 'Press Start 2P', monospace;
+        font-size: clamp(0.8rem, 4vw, 1.2rem);
+        text-align: center;
+        text-shadow: 2px 2px 0 #4a260c;
+        margin-bottom: clamp(1rem, 4vw, 1.5rem);
+        line-height: 1.3;
+      "
+    >
+      TU CARRITO
+    </h1>
 
-      <ion-button (click)="cambiarCantidad(c.id, c.cantidad + 1)">+</ion-button>
-      <ion-button (click)="cambiarCantidad(c.id, c.cantidad - 1)" [disabled]="c.cantidad <= 1">-</ion-button>
-      <ion-button color="danger" (click)="eliminar(c.id)">Eliminar</ion-button>
-    </ion-item>
+    <!-- Mensaje cuando el carrito está vacío -->
+    <div
+      *ngIf="carrito.length === 0"
+      style="
+        text-align: center;
+        padding: clamp(2rem, 8vw, 4rem);
+        color: #f0d1a6;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <p
+        style="
+          font-family: 'Press Start 2P', monospace;
+          font-size: clamp(0.6rem, 3vw, 0.8rem);
+          line-height: 1.4;
+        "
+      >
+        TU CARRITO ESTÁ VACÍO<br />
+        <span style="font-size: clamp(0.5rem, 2.5vw, 0.6rem); color: #a67c52">
+          ¡VISITA LA TIENDA PARA AGREGAR PRODUCTOS!
+        </span>
+      </p>
+    </div>
 
-    <h2 class="total">TOTAL: {{ total }} monedas</h2>
+    <!-- Lista de productos en el carrito -->
+    <div
+      *ngIf="carrito.length > 0"
+      style="flex-grow: 1; margin-bottom: clamp(1rem, 4vw, 1.5rem)"
+    >
+      <ion-item
+        *ngFor="let c of carrito"
+        style="
+          --background: #261912;
+          --border-radius: 8px;
+          margin-bottom: clamp(0.5rem, 2vw, 0.8rem);
+          border: 2px solid #8c4520;
+          padding: clamp(0.6rem, 2.5vw, 0.8rem);
+          font-family: 'Press Start 2P', monospace;
+        "
+      >
+        <ion-label style="flex-grow: 1">
+          <h2
+            style="
+              color: #ffcc5c;
+              font-size: clamp(0.6rem, 3vw, 0.8rem);
+              text-shadow: 1px 1px 0 #4a260c;
+              margin-bottom: clamp(0.3rem, 1.5vw, 0.5rem);
+              line-height: 1.3;
+            "
+          >
+            Producto: {{ c.productoId }}
+          </h2>
+          <p
+            style="
+              color: #f0d1a6;
+              font-size: clamp(0.5rem, 2.5vw, 0.6rem);
+              margin-bottom: clamp(0.5rem, 2vw, 0.8rem);
+            "
+          >
+            Cantidad: {{ c.cantidad }}
+          </p>
 
-    <ion-button expand="block" class="btn-jugar" (click)="comprar()">
-      Comprar
-    </ion-button>
+          <!-- Controles de cantidad -->
+          <div
+            style="
+              display: flex;
+              gap: clamp(0.3rem, 1.5vw, 0.5rem);
+              flex-wrap: wrap;
+            "
+          >
+            <ion-button
+              (click)="cambiarCantidad(c.id, c.cantidad + 1)"
+              style="
+                --background: #3b1e12;
+                --color: #ffcc5c;
+                --border-radius: 6px;
+                font-size: clamp(0.5rem, 2.5vw, 0.6rem);
+                min-height: 35px;
+                border: 1px solid #ffb000;
+                flex: 1;
+              "
+            >
+              +
+            </ion-button>
+
+            <ion-button
+              (click)="cambiarCantidad(c.id, c.cantidad - 1)"
+              [disabled]="c.cantidad <= 1"
+              style="
+                --background: #3b1e12;
+                --color: #ffcc5c;
+                --border-radius: 6px;
+                font-size: clamp(0.5rem, 2.5vw, 0.6rem);
+                min-height: 35px;
+                border: 1px solid #ffb000;
+                flex: 1;
+              "
+            >
+              -
+            </ion-button>
+
+            <ion-button
+              color="danger"
+              (click)="eliminar(c.id)"
+              style="
+                --background: #5c1a1a;
+                --color: #ffcccc;
+                --border-radius: 6px;
+                font-size: clamp(0.5rem, 2.5vw, 0.6rem);
+                min-height: 35px;
+                border: 1px solid #ff5555;
+                flex: 2;
+              "
+            >
+              Eliminar
+            </ion-button>
+          </div>
+        </ion-label>
+      </ion-item>
+    </div>
+
+    <!-- Sección de total y compra -->
+    <div *ngIf="carrito.length > 0" style="margin-top: auto">
+      <h2
+        class="total"
+        style="
+          color: #ffb000;
+          font-family: 'Press Start 2P', monospace;
+          font-size: clamp(0.7rem, 3.5vw, 0.9rem);
+          text-align: center;
+          text-shadow: 1px 1px 0 #4a260c;
+          margin-bottom: clamp(1rem, 4vw, 1.5rem);
+          padding: clamp(0.8rem, 3vw, 1rem);
+          background: #261912;
+          border: 2px solid #ffb000;
+          border-radius: 8px;
+        "
+      >
+        TOTAL: {{ total }} MONEDAS
+      </h2>
+
+      <ion-button
+        expand="block"
+        class="btn-jugar"
+        (click)="comprar()"
+        style="
+          --background: linear-gradient(90deg, #ffb000 0%, #ff4800 100%);
+          --color: #2b1007;
+          --border-radius: 8px;
+          border: 2px solid #803000;
+          font-family: 'Press Start 2P', monospace;
+          font-size: clamp(0.6rem, 3vw, 0.8rem);
+          min-height: 50px;
+          text-shadow: 1px 1px 0 #ffe3b3;
+        "
+      >
+        COMPRAR
+      </ion-button>
+    </div>
   </div>
 </ion-content>

@@ -1,34 +1,181 @@
 <ion-header [translucent]="true">
-  <ion-toolbar style="--background: #1b100e; border-bottom: 2px solid #7b3b1d;">
+  <ion-toolbar style="--background: #1b100e; border-bottom: 2px solid #7b3b1d">
     <ion-buttons slot="start">
-      <ion-menu-button menu="first" style="color: #ffcc5c;"></ion-menu-button>
+      <ion-menu-button
+        menu="first"
+        style="color: #ffcc5c; font-size: clamp(0.8rem, 4vw, 1.2rem)"
+      ></ion-menu-button>
     </ion-buttons>
-    <ion-title style="color: #ffcc5c; font-family: 'Press Start 2P', monospace; font-size: 0.9rem; text-shadow: 1px 1px 0 #4a260c;">
+    <ion-title
+      style="
+        color: #ffcc5c;
+        font-family: 'Press Start 2P', monospace;
+        font-size: clamp(0.7rem, 3.5vw, 0.9rem);
+        text-shadow: 1px 1px 0 #4a260c;
+        text-align: center;
+        padding: 0.5rem;
+      "
+    >
       TIENDA
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="container">
-    <h1 class="titulo">TIENDA</h1>
+<ion-content [fullscreen]="true" style="--background: #241a17">
+  <!-- Efecto CRT -->
+  <div
+    style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 2px
+      );
+      z-index: 9999;
+      opacity: 0.1;
+    "
+  ></div>
 
-    <ion-card *ngFor="let p of productos" class="producto-card">
-      <img [src]="p.imagen" />
+  <div class="container" style="padding: clamp(0.8rem, 3vw, 1rem)">
+    <h1
+      class="titulo"
+      style="
+        color: #ffcc5c;
+        font-family: 'Press Start 2P', monospace;
+        font-size: clamp(0.8rem, 4vw, 1.2rem);
+        text-align: center;
+        text-shadow: 2px 2px 0 #4a260c;
+        margin-bottom: clamp(1rem, 4vw, 1.5rem);
+        line-height: 1.3;
+      "
+    >
+      TIENDA
+    </h1>
 
-      <ion-card-header>
-        <ion-card-title>{{ p.nombre }}</ion-card-title>
-        <ion-card-subtitle>{{ p.precio }} monedas</ion-card-subtitle>
-      </ion-card-header>
+    <!-- Grid de productos responsive -->
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+        gap: clamp(0.8rem, 3vw, 1rem);
+      "
+    >
+      <ion-card
+        *ngFor="let p of productos"
+        style="
+          --background: #261912;
+          margin: 0;
+          border: 3px solid #8c4520;
+          border-radius: 12px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        "
+      >
+        <img
+          [src]="p.imagen"
+          style="
+            width: 100%;
+            height: clamp(150px, 30vw, 200px);
+            object-fit: cover;
+            border-bottom: 2px solid #7b3b1d;
+          "
+        />
 
-      <ion-card-content>
-        <p>{{ p.descripcion }}</p>
+        <ion-card-header
+          style="padding: clamp(0.8rem, 3vw, 1rem); flex-shrink: 0"
+        >
+          <ion-card-title
+            style="
+              color: #ffcc5c;
+              font-family: 'Press Start 2P', monospace;
+              font-size: clamp(0.6rem, 3vw, 0.8rem);
+              text-shadow: 1px 1px 0 #4a260c;
+              line-height: 1.3;
+              margin-bottom: 0.5rem;
+            "
+          >
+            {{ p.nombre }}
+          </ion-card-title>
+          <ion-card-subtitle
+            style="
+              color: #ffb000;
+              font-family: 'Press Start 2P', monospace;
+              font-size: clamp(0.5rem, 2.5vw, 0.7rem);
+              text-shadow: 1px 1px 0 #4a260c;
+            "
+          >
+            💰 {{ p.precio }} monedas
+          </ion-card-subtitle>
+        </ion-card-header>
 
-        <ion-button expand="block" class="btn-jugar" (click)="agregar(p.id)">
-          Agregar al carrito
-        </ion-button>
-      </ion-card-content>
-    </ion-card>
+        <ion-card-content
+          style="
+            padding: 0 clamp(0.8rem, 3vw, 1rem) clamp(0.8rem, 3vw, 1rem);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <p
+            style="
+              color: #f0d1a6;
+              font-family: 'Press Start 2P', monospace;
+              font-size: clamp(0.45rem, 2.2vw, 0.6rem);
+              line-height: 1.5;
+              margin-bottom: clamp(0.8rem, 3vw, 1rem);
+              flex-grow: 1;
+            "
+          >
+            {{ p.descripcion }}
+          </p>
 
+          <ion-button
+            expand="block"
+            class="btn-jugar"
+            (click)="agregar(p.id)"
+            style="
+              --background: linear-gradient(90deg, #ffb000 0%, #ff4800 100%);
+              --color: #2b1007;
+              --border-radius: 8px;
+              border: 2px solid #803000;
+              font-family: 'Press Start 2P', monospace;
+              font-size: clamp(0.5rem, 2.5vw, 0.6rem);
+              min-height: 44px;
+              margin: 0;
+              text-shadow: 1px 1px 0 #ffe3b3;
+            "
+          >
+            Agregar al carrito
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- Mensaje si no hay productos -->
+    <div
+      *ngIf="productos.length === 0"
+      style="
+        text-align: center;
+        padding: clamp(2rem, 8vw, 4rem);
+        color: #f0d1a6;
+      "
+    >
+      <p
+        style="
+          font-family: 'Press Start 2P', monospace;
+          font-size: clamp(0.6rem, 3vw, 0.8rem);
+        "
+      >
+        No hay productos disponibles en este momento.
+      </p>
+    </div>
   </div>
 </ion-content>
