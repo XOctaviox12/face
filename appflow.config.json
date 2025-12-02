@@ -5,7 +5,9 @@
       "root": "./",
       "platforms": {
         "ios": {
-          "projectPath": "ios/App/App.xcodeproj"
+          "projectPath": "ios/App/App.xcodeproj",
+          "scheme": "App",
+          "buildType": "ad-hoc"
         }
       }
     }
