@@ -2,10 +2,10 @@
   "apps": [
     {
       "appId": "cd45721a",
-      "root": "./",
       "platforms": {
         "ios": {
           "projectPath": "ios/App/App.xcodeproj",
+          "workspacePath": "ios/App/App.xcworkspace",
           "scheme": "App",
           "buildType": "debug"
         }
