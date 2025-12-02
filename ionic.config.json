@@ -1,5 +1,5 @@
 {
-  "name": "app-facebomb",
+  "name": "facebomb-app",
   "integrations": {
     "capacitor": {}
   },
