@@ -88,7 +88,23 @@
           {{ enviandoVerificacion ? 'ENVIANDO...' : 'ENVIAR CORREO DE ACTIVACIÓN' }}
         </ion-button>
       </div>
+      <div class="inventory-section">
+        <h3 class="retro-subtitle">MOCHILA</h3>
 
+        <div *ngIf="inventario.length === 0" class="empty-msg">
+          <p>MOCHILA VACÍA</p>
+        </div>
+
+        <div class="inventory-grid">
+          <div *ngFor="let item of inventario" class="inv-item">
+            <div class="item-img-box">
+              <img [src]="item.producto?.imagen" alt="item">
+              <span class="qty-badge">x{{ item.cantidad }}</span>
+            </div>
+            <span class="item-name">{{ item.producto?.nombre }}</span>
+          </div>
+        </div>
+      </div>
       <div class="action-buttons">
         <ion-button class="btn-retro shop" routerLink="/tienda">
           <ion-icon name="cart" slot="start"></ion-icon>
@@ -100,7 +116,6 @@
           ACTUALIZAR DATOS
         </ion-button>
       </div>
-
     </div>
   </div>
 </ion-content>

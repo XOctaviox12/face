@@ -13,6 +13,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { firebaseConfig } from '../environments/firebaseconfig';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
 
 @NgModule({
   // Declaración de los componentes que pertenecen a este módulo principal
@@ -41,6 +42,7 @@ import { firebaseConfig } from '../environments/firebaseconfig';
       provideFirebaseApp(() => initializeApp(firebaseConfig)), // Inicializa Firebase con la configuración del entorno
       provideFirestore(() => getFirestore()),                  // Proporciona acceso a Firestore
       provideAuth(() => getAuth()),                            // Proporciona acceso al servicio de autenticación
+      provideDatabase(() => getDatabase()),
     ])
   ],
 

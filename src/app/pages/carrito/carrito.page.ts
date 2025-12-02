@@ -132,22 +132,34 @@ export class CarritoPage implements OnInit, OnDestroy {
 
   async procesarCompra() {
     try {
-      console.log('Procesando compra...', this.carrito);
+      console.log('Procesando compra...');
       const totalItems = this.carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
 
-      await this.tiendaSrv.vaciarCarrito();
+      // --- CAMBIO AQUÍ: Pasamos el total (this.total) ---
+      await this.tiendaSrv.procesarCompra(this.total);
+      // -------------------
+
+      // Actualizamos la vista local
+      this.carrito = [];
+      this.total = 0;
 
       const alert = await this.alertController.create({
         header: '¡COMPRA EXITOSA!',
-        message: `Has comprado ${totalItems} productos por ${this.total} monedas.`,
+        message: `Has añadido ${totalItems} objetos a tu inventario y se han descontado las monedas.`,
         buttons: ['OK']
       });
 
       await alert.present();
 
-    } catch (error) {
+    } catch (error: any) { // Ponemos 'any' para leer el mensaje
       console.error('Error procesando compra:', error);
-      this.mostrarError('Hubo un error al procesar tu compra');
+
+      // Manejo específico si no hay dinero
+      if (error.message === 'SALDO_INSUFICIENTE') {
+        this.mostrarError('¡No tienes suficientes monedas para esta compra! Juega más niveles.');
+      } else {
+        this.mostrarError('Hubo un error al guardar tus artículos.');
+      }
     }
   }
 
@@ -171,6 +183,7 @@ export class CarritoPage implements OnInit, OnDestroy {
   getImagenProducto(item: any): string {
     return item.producto?.imagen || this.getImagenPorDefecto();
   }
+
 
   getImagenPorDefecto(): string {
     return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMyNjE5MTIiLz4KICA8cGF0aCBkPSJNODAgNjBDOTMuMjUgNjAgMTA0IDcwLjc1IDEwNCA4NEMxMDQgOTcuMjUgOTMuMjUgMTA4IDgwIDEwOEM2Ni43NSAxMDggNTYgOTcuMjUgNTYgODRDNTYgNzAuNzUgNjYuNzUgNjAgODAgNjBaTTgwIDEyMEM5NiAxMjAgMTEwIDEzMCAxMTAgMTQ2VjE3MEg1MFYxNDZDNTAgMTMwIDY0IDEyMCA4MCAxMjBaIiBmaWxsPSIjZmZjYzVjIi8+Cjwvc3ZnPg==';

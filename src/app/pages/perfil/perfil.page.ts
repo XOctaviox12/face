@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from '@angular/fire/auth'; // Solo importamos el tipo User
+import { User } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { PerfilService } from '../../services/perfil.service'; // Importamos el nuevo servicio
+import { PerfilService } from '../../services/perfil.service';
+import { TiendaService } from '../../services/tienda.service';
+import { ViewWillEnter } from '@ionic/angular'; // 1. IMPORTAR ESTO
 
 @Component({
   standalone: false,
@@ -10,30 +12,45 @@ import { PerfilService } from '../../services/perfil.service'; // Importamos el 
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
 })
-export class PerfilPage implements OnInit, OnDestroy {
+// 2. IMPLEMENTAR ViewWillEnter
+export class PerfilPage implements OnInit, OnDestroy, ViewWillEnter {
 
   perfil: any = {};
   user: User | null = null;
-  monedas: number = 100;
+  monedas: number = 0;
   cargando: boolean = true;
   enviandoVerificacion: boolean = false;
+  inventario: any[] = [];
 
   private userSubscription: Subscription | null = null;
 
   constructor(
     private authService: AuthService,
-    private perfilService: PerfilService // Inyectamos el servicio
+    private perfilService: PerfilService,
+    private tiendaSrv: TiendaService
   ) {}
 
   async ngOnInit() {
+    // Mantenemos la suscripción principal aquí para detectar login/logout
     this.userSubscription = this.authService.user$.subscribe(async (user) => {
       this.user = user;
       if (user) {
         await this.cargarDatosUsuario();
+        this.cargarInventario();
       } else {
         this.cargando = false;
       }
     });
+  }
+
+  // 3. AGREGAR ESTE MÉTODO MÁGICO
+  // Se ejecuta CADA VEZ que entras a la pantalla (al volver de la tienda, etc.)
+  ionViewWillEnter() {
+    if (this.user) {
+      console.log('🔄 Refrescando perfil al entrar...');
+      this.cargarDatosUsuario(); // Recarga monedas y datos
+      this.cargarInventario();   // Recarga la mochila
+    }
   }
 
   ngOnDestroy() {
@@ -42,8 +59,18 @@ export class PerfilPage implements OnInit, OnDestroy {
     }
   }
 
+  cargarInventario() {
+    // Nota: Como getInventario devuelve un Observable, se queda escuchando cambios.
+    // Pero llamarlo aquí asegura que tengamos la última versión si algo cambió.
+    this.tiendaSrv.getInventario().subscribe(items => {
+      this.inventario = items;
+      // console.log("Inventario cargado:", this.inventario);
+    });
+  }
+
   async cargarDatosUsuario() {
-    this.cargando = true;
+    // Opcional: Poner cargando en true solo si quieres que aparezca el spinner cada vez
+    // this.cargando = true;
     try {
       await this.cargarPerfilFirestore();
       this.cargarDatosAuth();
@@ -58,16 +85,22 @@ export class PerfilPage implements OnInit, OnDestroy {
     try {
       if (!this.user?.uid) return;
 
-      // USAMOS EL SERVICIO EN LUGAR DE getDoc DIRECTO
       const datos = await this.perfilService.obtenerDatosPerfil(this.user.uid);
 
       if (datos) {
         this.perfil = { ...this.perfil, ...datos };
-        this.monedas = this.perfil.monedas || 100;
+        this.monedas = datos.monedas !== undefined ? datos.monedas : 0;
+        console.log('💰 Monedas actualizadas:', this.monedas);
       }
     } catch (error) {
       console.error('Error cargando perfil:', error);
     }
+  }
+
+  // ... El resto de tus métodos (getImagenProducto, cargarDatosAuth, etc.) siguen IGUAL ...
+
+  getImagenProducto(item: any): string {
+    return item.producto?.imagen || 'assets/default-item.png';
   }
 
   cargarDatosAuth() {
@@ -90,7 +123,6 @@ export class PerfilPage implements OnInit, OnDestroy {
   }
 
   onErrorImagen(event: any) {
-    console.log('Error cargando imagen, usando avatar por defecto');
     event.target.src = this.getAvatarPorDefecto();
   }
 
@@ -112,15 +144,13 @@ export class PerfilPage implements OnInit, OnDestroy {
 
   async enviarVerificacionEmail() {
     if (!this.user) return;
-
     this.enviandoVerificacion = true;
     try {
-      // USAMOS EL SERVICIO EN LUGAR DE sendEmailVerification DIRECTO
       await this.perfilService.enviarCorreoVerificacion(this.user);
       alert('✅ Email de verificación enviado. Revisa tu bandeja de entrada.');
     } catch (error: any) {
-      console.error('Error enviando verificación:', error);
-      alert('❌ Error al enviar verificación: ' + error.message);
+      console.error('Error:', error);
+      alert('❌ Error: ' + error.message);
     } finally {
       this.enviandoVerificacion = false;
     }
@@ -128,7 +158,7 @@ export class PerfilPage implements OnInit, OnDestroy {
 
   async actualizarPerfil() {
     await this.cargarDatosUsuario();
-    console.log('Perfil actualizado');
+    console.log('Perfil actualizado manualmente');
   }
 
   getProveedor(): string {

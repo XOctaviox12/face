@@ -39,3 +39,11 @@
 
 /* src/global.scss */
 
+ion-header ion-toolbar:first-of-type {
+  /* Forzamos un espacio arriba manualmente */
+  padding-top: 25px !important;
+  /* Aseguramos que el contenido del toolbar no se estire raro */
+  min-height: 80px !important;
+  align-items: flex-end !important;
+  padding-bottom: 10px;
+}

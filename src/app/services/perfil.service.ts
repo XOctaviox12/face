@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, doc, getDoc } from '@angular/fire/firestore';
+import { Database, ref, child, get } from '@angular/fire/database'; // <--- Usamos Database ahora
 import { Auth, sendEmailVerification, User } from '@angular/fire/auth';
 
 @Injectable({
@@ -8,14 +8,29 @@ import { Auth, sendEmailVerification, User } from '@angular/fire/auth';
 export class PerfilService {
 
   constructor(
-    private firestore: Firestore,
+    private db: Database, // Inyectamos Realtime Database
     private auth: Auth
   ) { }
 
   async obtenerDatosPerfil(uid: string): Promise<any> {
-    const ref = doc(this.firestore, `usuarios/${uid}`);
-    const snapshot = await getDoc(ref);
-    return snapshot.exists() ? snapshot.data() : {};
+    try {
+      // Referencia a la raíz de la base de datos
+      const dbRef = ref(this.db);
+
+      // Buscamos en la ruta: users/UID
+      // (Exactamente igual a como lo guardamos en Unity)
+      const snapshot = await get(child(dbRef, `users/${uid}`));
+
+      if (snapshot.exists()) {
+        return snapshot.val(); // .val() nos da el objeto JSON puro
+      } else {
+        console.log("No se encontraron datos para este usuario.");
+        return {};
+      }
+    } catch (error) {
+      console.error("Error leyendo Realtime DB:", error);
+      throw error;
+    }
   }
 
   async enviarCorreoVerificacion(user: User): Promise<void> {
