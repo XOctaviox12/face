@@ -1,0 +1,15 @@
+{
+  "apps": [
+    {
+      "appId": "cd45721a",
+      "root": "./",
+      "platforms": {
+        "ios": {
+          "projectPath": "ios/App/App.xcodeproj",
+          "scheme": "App",
+          "buildType": "ad-hoc"
+        }
+      }
+    }
+  ]
+}
